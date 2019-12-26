@@ -1,9 +1,11 @@
 import React from "react";
 import Note from "./Note";
+import "./NoteApp.css";
 import NoteForm from "../ToDoForm/ToDoForm";
 import { DB_CONFIG } from "../Firebase/DB_CONFIG";
 import firebase from "firebase/app";
 import "firebase/database";
+import { Container } from "react-bootstrap";
 
 export default class TestNoteApp extends React.Component {
   constructor(props) {
@@ -60,24 +62,26 @@ export default class TestNoteApp extends React.Component {
   render() {
     return (
       <div className="notesWrapper">
-        <div className="notesHeader">
-          <h1>To-Do List</h1>
-        </div>
-        <div className="notesBody">
-          {this.state.notes.map(note => {
-            return (
-              <Note
-                noteContent={note.noteContent}
-                noteId={note.id}
-                key={note.id}
-                removeNote={this.removeNote}
-              />
-            );
-          })}
-        </div>
-        <div className="notesFooter">
-          <NoteForm addNote={this.addNote} />
-        </div>
+        <Container>
+          <div className="notesHeader">
+            <h1>To-Do List</h1>
+          </div>
+          <div className="notesBody">
+            {this.state.notes.map(note => {
+              return (
+                <Note
+                  noteContent={note.noteContent}
+                  noteId={note.id}
+                  key={note.id}
+                  removeNote={this.removeNote}
+                />
+              );
+            })}
+          </div>
+          <div className="notesFooter">
+            <NoteForm addNote={this.addNote} />
+          </div>
+        </Container>
       </div>
     );
   }

@@ -1,0 +1,66 @@
+.note {
+  padding: 20px;
+  height: auto;
+  margin: auto;
+  margin-bottom: 8px;
+  width: 60%;
+  font-family: "Song Myung", serif;
+  font-size: 1.4em;
+  color: #222;
+  background-color: #eed;
+  border-radius: 3px;
+  box-shadow: 43x 3px 2px #333;
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opactiy: 0.8;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn ease-in 1;
+  animation-fill-mode: forwards;
+  animation-duration: 0.1s;
+}
+
+.noteContent {
+  float: left;
+  margin: auto;
+  padding: 10px;
+  font-size: 1.5em;
+  display: block;
+}
+.closebtn {
+  float: right;
+  padding-right: 5px;
+  padding-top: 5px;
+  font-size: 1.4em;
+  display: block;
+}
+
+.closebtn:hover {
+  color: red;
+  cursor: pointer;
+  transition: 0.7s;
+}
+@media all and (max-width: 450px) {
+  .note {
+    padding: 10px;
+    width: 95%;
+    font-size: 1em;
+  }
+}
