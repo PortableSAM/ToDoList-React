@@ -61,8 +61,8 @@ export default class TestNoteApp extends React.Component {
 
   render() {
     return (
-      <div className="notesWrapper">
-        <Container>
+      <Container>
+        <div className="notesWrapper">
           <div className="notesHeader">
             <h1>To-Do List</h1>
           </div>
@@ -78,11 +78,11 @@ export default class TestNoteApp extends React.Component {
               );
             })}
           </div>
-          <div className="notesFooter">
-            <NoteForm addNote={this.addNote} />
-          </div>
-        </Container>
-      </div>
+        </div>
+        <div className="notesFooter">
+          <NoteForm addNote={this.addNote} />
+        </div>
+      </Container>
     );
   }
 }
