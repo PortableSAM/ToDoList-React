@@ -1,4 +1,4 @@
-# Movie List App
+# To Do List App (With React & Firebase)
 
 > Development environment
 
