@@ -1,12 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import Note from "./Note";
 import NoteForm from "../ToDoForm/ToDoForm";
 import { DB_CONFIG } from "../Firebase/DB_CONFIG";
 import firebase from "firebase/app";
+import "firebase/database";
 
-export default class NoteApp extends Component {
+export default class TestNoteApp extends React.Component {
   constructor(props) {
     super(props);
+    this.addNote = this.addNote.bind(this);
+    this.removeNote = this.removeNote.bind(this);
 
     this.app = firebase.initializeApp(DB_CONFIG);
     this.database = this.app
@@ -14,6 +17,7 @@ export default class NoteApp extends Component {
       .ref()
       .child("notes");
 
+    // We're going to setup the React state of our component
     this.state = {
       notes: []
     };
@@ -22,22 +26,21 @@ export default class NoteApp extends Component {
   componentDidMount() {
     const previousNotes = this.state.notes;
 
-    //Database Snapshots
-    this.database.on("chlid_added", snap => {
+    // DatabaseSnapshot
+    this.database.on("child_added", snap => {
       previousNotes.push({
         id: snap.key,
         noteContent: snap.val().noteContent
       });
-    });
-
-    this.setState({
-      notes: previousNotes
+      this.setState({
+        notes: previousNotes
+      });
     });
 
     this.database.on("child_removed", snap => {
-      for (let i = 0; i < previousNotes.length; ++i) {
+      for (let i = 0; i < previousNotes.length; i++) {
         if (previousNotes[i].id === snap.key) {
-          previousNotes.slice(i, 1);
+          previousNotes.splice(i, 1);
         }
       }
       this.setState({
