@@ -1,7 +1,11 @@
 .App {
   text-align: center;
-  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
+/*
 
 .App-logo {
   height: 40vmin;
@@ -37,3 +41,4 @@
     transform: rotate(360deg);
   }
 }
+*/
